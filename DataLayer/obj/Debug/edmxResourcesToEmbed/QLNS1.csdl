@@ -1,0 +1,681 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLNhanSuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QLNhanSuEntities3" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QLNhanSuModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QLNhanSuModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="BAOCAOs" EntityType="QLNhanSuModel.BAOCAO" />
+    <EntitySet Name="BAOHIEMXAHOIs" EntityType="QLNhanSuModel.BAOHIEMXAHOI" />
+    <EntitySet Name="BAOHIEMYTEs" EntityType="QLNhanSuModel.BAOHIEMYTE" />
+    <EntitySet Name="CHUCVUs" EntityType="QLNhanSuModel.CHUCVU" />
+    <EntitySet Name="CTTKNGUOIDUNGs" EntityType="QLNhanSuModel.CTTKNGUOIDUNG" />
+    <EntitySet Name="DANTOCs" EntityType="QLNhanSuModel.DANTOC" />
+    <EntitySet Name="HOPDONGs" EntityType="QLNhanSuModel.HOPDONG" />
+    <EntitySet Name="LOAIBAOHIEMs" EntityType="QLNhanSuModel.LOAIBAOHIEM" />
+    <EntitySet Name="NGHIPHEPs" EntityType="QLNhanSuModel.NGHIPHEP" />
+    <EntitySet Name="NHANVIENs" EntityType="QLNhanSuModel.NHANVIEN" />
+    <EntitySet Name="PHIEULUONGs" EntityType="QLNhanSuModel.PHIEULUONG" />
+    <EntitySet Name="PHONGBANs" EntityType="QLNhanSuModel.PHONGBAN" />
+    <EntitySet Name="QUOCTICHes" EntityType="QLNhanSuModel.QUOCTICH" />
+    <EntitySet Name="TAIKHOANADMINs" EntityType="QLNhanSuModel.TAIKHOANADMIN" />
+    <EntitySet Name="TAIKHOANNGUOIDUNGs" EntityType="QLNhanSuModel.TAIKHOANNGUOIDUNG" />
+    <EntitySet Name="TONGIAOs" EntityType="QLNhanSuModel.TONGIAO" />
+    <EntitySet Name="TRINHDOes" EntityType="QLNhanSuModel.TRINHDO" />
+    <EntitySet Name="VAITROes" EntityType="QLNhanSuModel.VAITRO" />
+    <AssociationSet Name="BC_CV_FK" Association="QLNhanSuModel.BC_CV_FK">
+      <End Role="CHUCVU" EntitySet="CHUCVUs" />
+      <End Role="BAOCAO" EntitySet="BAOCAOs" />
+    </AssociationSet>
+    <AssociationSet Name="BC_HD_FK" Association="QLNhanSuModel.BC_HD_FK">
+      <End Role="HOPDONG" EntitySet="HOPDONGs" />
+      <End Role="BAOCAO" EntitySet="BAOCAOs" />
+    </AssociationSet>
+    <AssociationSet Name="BC_L_FK" Association="QLNhanSuModel.BC_L_FK">
+      <End Role="PHIEULUONG" EntitySet="PHIEULUONGs" />
+      <End Role="BAOCAO" EntitySet="BAOCAOs" />
+    </AssociationSet>
+    <AssociationSet Name="BC_NV_FK" Association="QLNhanSuModel.BC_NV_FK">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="BAOCAO" EntitySet="BAOCAOs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BAOCAO_NGHIPHEP" Association="QLNhanSuModel.FK_BAOCAO_NGHIPHEP">
+      <End Role="NGHIPHEP" EntitySet="NGHIPHEPs" />
+      <End Role="BAOCAO" EntitySet="BAOCAOs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BAOHIEMXAHOI_LOAIBAOHIEM" Association="QLNhanSuModel.FK_BAOHIEMXAHOI_LOAIBAOHIEM">
+      <End Role="LOAIBAOHIEM" EntitySet="LOAIBAOHIEMs" />
+      <End Role="BAOHIEMXAHOI" EntitySet="BAOHIEMXAHOIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BAOHIEMXAHOI_NHANVIEN" Association="QLNhanSuModel.FK_BAOHIEMXAHOI_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="BAOHIEMXAHOI" EntitySet="BAOHIEMXAHOIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BAOHIEMYTE_LOAIBAOHIEM" Association="QLNhanSuModel.FK_BAOHIEMYTE_LOAIBAOHIEM">
+      <End Role="LOAIBAOHIEM" EntitySet="LOAIBAOHIEMs" />
+      <End Role="BAOHIEMYTE" EntitySet="BAOHIEMYTEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BAOHIEMYTE_NHANVIEN" Association="QLNhanSuModel.FK_BAOHIEMYTE_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="BAOHIEMYTE" EntitySet="BAOHIEMYTEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_CHUCVU" Association="QLNhanSuModel.FK_NHANVIEN_CHUCVU">
+      <End Role="CHUCVU" EntitySet="CHUCVUs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="PL_CV_FK" Association="QLNhanSuModel.PL_CV_FK">
+      <End Role="CHUCVU" EntitySet="CHUCVUs" />
+      <End Role="PHIEULUONG" EntitySet="PHIEULUONGs" />
+    </AssociationSet>
+    <AssociationSet Name="CTTK_ND_FK" Association="QLNhanSuModel.CTTK_ND_FK">
+      <End Role="TAIKHOANNGUOIDUNG" EntitySet="TAIKHOANNGUOIDUNGs" />
+      <End Role="CTTKNGUOIDUNG" EntitySet="CTTKNGUOIDUNGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_DANTOC" Association="QLNhanSuModel.FK_NHANVIEN_DANTOC">
+      <End Role="DANTOC" EntitySet="DANTOCs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HOPDONG_NHANVIEN" Association="QLNhanSuModel.FK_HOPDONG_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="HOPDONG" EntitySet="HOPDONGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NGHIPHEP_NHANVIEN" Association="QLNhanSuModel.FK_NGHIPHEP_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="NGHIPHEP" EntitySet="NGHIPHEPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHIEULUONG_NGHIPHEP" Association="QLNhanSuModel.FK_PHIEULUONG_NGHIPHEP">
+      <End Role="NGHIPHEP" EntitySet="NGHIPHEPs" />
+      <End Role="PHIEULUONG" EntitySet="PHIEULUONGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_PHONGBAN" Association="QLNhanSuModel.FK_NHANVIEN_PHONGBAN">
+      <End Role="PHONGBAN" EntitySet="PHONGBANs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_QUOCTICH" Association="QLNhanSuModel.FK_NHANVIEN_QUOCTICH">
+      <End Role="QUOCTICH" EntitySet="QUOCTICHes" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_TONGIAO" Association="QLNhanSuModel.FK_NHANVIEN_TONGIAO">
+      <End Role="TONGIAO" EntitySet="TONGIAOs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_TRINHDO" Association="QLNhanSuModel.FK_NHANVIEN_TRINHDO">
+      <End Role="TRINHDO" EntitySet="TRINHDOes" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="ND_NV_FK" Association="QLNhanSuModel.ND_NV_FK">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="TAIKHOANNGUOIDUNG" EntitySet="TAIKHOANNGUOIDUNGs" />
+    </AssociationSet>
+    <AssociationSet Name="PL_NV_FK" Association="QLNhanSuModel.PL_NV_FK">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="PHIEULUONG" EntitySet="PHIEULUONGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAIKHOANADMIN_VAITRO" Association="QLNhanSuModel.FK_TAIKHOANADMIN_VAITRO">
+      <End Role="VAITRO" EntitySet="VAITROes" />
+      <End Role="TAIKHOANADMIN" EntitySet="TAIKHOANADMINs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAIKHOANNGUOIDUNG_VAITRO" Association="QLNhanSuModel.FK_TAIKHOANNGUOIDUNG_VAITRO">
+      <End Role="VAITRO" EntitySet="VAITROes" />
+      <End Role="TAIKHOANNGUOIDUNG" EntitySet="TAIKHOANNGUOIDUNGs" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="BAOCAO">
+    <Key>
+      <PropertyRef Name="MABC" />
+    </Key>
+    <Property Name="MABC" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MACV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MANP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MAL" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MAHD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LOAIBAOCAO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYTAO" Type="DateTime" Precision="0" />
+    <Property Name="TRANGTHAI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHUCVU" Relationship="QLNhanSuModel.BC_CV_FK" FromRole="BAOCAO" ToRole="CHUCVU" />
+    <NavigationProperty Name="HOPDONG" Relationship="QLNhanSuModel.BC_HD_FK" FromRole="BAOCAO" ToRole="HOPDONG" />
+    <NavigationProperty Name="PHIEULUONG" Relationship="QLNhanSuModel.BC_L_FK" FromRole="BAOCAO" ToRole="PHIEULUONG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLNhanSuModel.BC_NV_FK" FromRole="BAOCAO" ToRole="NHANVIEN" />
+    <NavigationProperty Name="NGHIPHEP" Relationship="QLNhanSuModel.FK_BAOCAO_NGHIPHEP" FromRole="BAOCAO" ToRole="NGHIPHEP" />
+  </EntityType>
+  <EntityType Name="BAOHIEMXAHOI">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LBH_ID" Type="Int32" />
+    <Property Name="MABAOHIEM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYCAP" Type="DateTime" Precision="0" />
+    <Property Name="NOICAP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="THOIGIANLAMVIEC" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="THOIGIANDONGBH" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="LOAIBAOHIEM" Relationship="QLNhanSuModel.FK_BAOHIEMXAHOI_LOAIBAOHIEM" FromRole="BAOHIEMXAHOI" ToRole="LOAIBAOHIEM" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLNhanSuModel.FK_BAOHIEMXAHOI_NHANVIEN" FromRole="BAOHIEMXAHOI" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="BAOHIEMYTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LBH_ID" Type="Int32" Nullable="false" />
+    <Property Name="MABAOHIEM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="NOICAP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GIATRISUDUNG" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="NOIKHAM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MAVUNG" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="LOAIBAOHIEM" Relationship="QLNhanSuModel.FK_BAOHIEMYTE_LOAIBAOHIEM" FromRole="BAOHIEMYTE" ToRole="LOAIBAOHIEM" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLNhanSuModel.FK_BAOHIEMYTE_NHANVIEN" FromRole="BAOHIEMYTE" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="CHUCVU">
+    <Key>
+      <PropertyRef Name="MACV" />
+    </Key>
+    <Property Name="MACV" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TENCHUCVU" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BAOCAOs" Relationship="QLNhanSuModel.BC_CV_FK" FromRole="CHUCVU" ToRole="BAOCAO" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLNhanSuModel.FK_NHANVIEN_CHUCVU" FromRole="CHUCVU" ToRole="NHANVIEN" />
+    <NavigationProperty Name="PHIEULUONGs" Relationship="QLNhanSuModel.PL_CV_FK" FromRole="CHUCVU" ToRole="PHIEULUONG" />
+  </EntityType>
+  <EntityType Name="CTTKNGUOIDUNG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="MATK_ND" Type="Int32" />
+    <Property Name="TENTAIKHOAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TRANGTHAI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYTAO" Type="DateTime" Precision="0" />
+    <Property Name="NHOMTAIKHOAN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TAIKHOANNGUOIDUNG" Relationship="QLNhanSuModel.CTTK_ND_FK" FromRole="CTTKNGUOIDUNG" ToRole="TAIKHOANNGUOIDUNG" />
+  </EntityType>
+  <EntityType Name="DANTOC">
+    <Key>
+      <PropertyRef Name="MADT" />
+    </Key>
+    <Property Name="MADT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TENDANTOC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLNhanSuModel.FK_NHANVIEN_DANTOC" FromRole="DANTOC" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="HOPDONG">
+    <Key>
+      <PropertyRef Name="MAHD" />
+    </Key>
+    <Property Name="MAHD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LOAIHD" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYKIHD" Type="DateTime" Precision="0" />
+    <Property Name="NGAYHETHANHD" Type="DateTime" Precision="0" />
+    <Property Name="HESOLUONG" Type="Double" />
+    <NavigationProperty Name="BAOCAOs" Relationship="QLNhanSuModel.BC_HD_FK" FromRole="HOPDONG" ToRole="BAOCAO" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLNhanSuModel.FK_HOPDONG_NHANVIEN" FromRole="HOPDONG" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="LOAIBAOHIEM">
+    <Key>
+      <PropertyRef Name="LBH_ID" />
+    </Key>
+    <Property Name="LBH_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENBAOHIEM" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BAOHIEMXAHOIs" Relationship="QLNhanSuModel.FK_BAOHIEMXAHOI_LOAIBAOHIEM" FromRole="LOAIBAOHIEM" ToRole="BAOHIEMXAHOI" />
+    <NavigationProperty Name="BAOHIEMYTEs" Relationship="QLNhanSuModel.FK_BAOHIEMYTE_LOAIBAOHIEM" FromRole="LOAIBAOHIEM" ToRole="BAOHIEMYTE" />
+  </EntityType>
+  <EntityType Name="NGHIPHEP">
+    <Key>
+      <PropertyRef Name="MANP" />
+    </Key>
+    <Property Name="MANP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MANV" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NGAYBATDAU" Type="DateTime" Precision="0" />
+    <Property Name="NGAYKETTHUC" Type="DateTime" Precision="0" />
+    <Property Name="LOAINGHIPHEP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="SONGAY" Type="Int32" />
+    <Property Name="TRANGTHAI" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BAOCAOs" Relationship="QLNhanSuModel.FK_BAOCAO_NGHIPHEP" FromRole="NGHIPHEP" ToRole="BAOCAO" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLNhanSuModel.FK_NGHIPHEP_NHANVIEN" FromRole="NGHIPHEP" ToRole="NHANVIEN" />
+    <NavigationProperty Name="PHIEULUONGs" Relationship="QLNhanSuModel.FK_PHIEULUONG_NGHIPHEP" FromRole="NGHIPHEP" ToRole="PHIEULUONG" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CCCD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GIOITINH" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+    <Property Name="NOISINH" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MADT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MATG" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MAQT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MACV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MAPB" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MATD" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="GHICHU" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BAOCAOs" Relationship="QLNhanSuModel.BC_NV_FK" FromRole="NHANVIEN" ToRole="BAOCAO" />
+    <NavigationProperty Name="BAOHIEMXAHOIs" Relationship="QLNhanSuModel.FK_BAOHIEMXAHOI_NHANVIEN" FromRole="NHANVIEN" ToRole="BAOHIEMXAHOI" />
+    <NavigationProperty Name="BAOHIEMYTEs" Relationship="QLNhanSuModel.FK_BAOHIEMYTE_NHANVIEN" FromRole="NHANVIEN" ToRole="BAOHIEMYTE" />
+    <NavigationProperty Name="CHUCVU" Relationship="QLNhanSuModel.FK_NHANVIEN_CHUCVU" FromRole="NHANVIEN" ToRole="CHUCVU" />
+    <NavigationProperty Name="DANTOC" Relationship="QLNhanSuModel.FK_NHANVIEN_DANTOC" FromRole="NHANVIEN" ToRole="DANTOC" />
+    <NavigationProperty Name="HOPDONGs" Relationship="QLNhanSuModel.FK_HOPDONG_NHANVIEN" FromRole="NHANVIEN" ToRole="HOPDONG" />
+    <NavigationProperty Name="NGHIPHEPs" Relationship="QLNhanSuModel.FK_NGHIPHEP_NHANVIEN" FromRole="NHANVIEN" ToRole="NGHIPHEP" />
+    <NavigationProperty Name="PHONGBAN" Relationship="QLNhanSuModel.FK_NHANVIEN_PHONGBAN" FromRole="NHANVIEN" ToRole="PHONGBAN" />
+    <NavigationProperty Name="QUOCTICH" Relationship="QLNhanSuModel.FK_NHANVIEN_QUOCTICH" FromRole="NHANVIEN" ToRole="QUOCTICH" />
+    <NavigationProperty Name="TONGIAO" Relationship="QLNhanSuModel.FK_NHANVIEN_TONGIAO" FromRole="NHANVIEN" ToRole="TONGIAO" />
+    <NavigationProperty Name="TRINHDO" Relationship="QLNhanSuModel.FK_NHANVIEN_TRINHDO" FromRole="NHANVIEN" ToRole="TRINHDO" />
+    <NavigationProperty Name="TAIKHOANNGUOIDUNGs" Relationship="QLNhanSuModel.ND_NV_FK" FromRole="NHANVIEN" ToRole="TAIKHOANNGUOIDUNG" />
+    <NavigationProperty Name="PHIEULUONGs" Relationship="QLNhanSuModel.PL_NV_FK" FromRole="NHANVIEN" ToRole="PHIEULUONG" />
+  </EntityType>
+  <EntityType Name="PHIEULUONG">
+    <Key>
+      <PropertyRef Name="MAL" />
+    </Key>
+    <Property Name="MAL" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MANP" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="MACV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="HESO" Type="Int32" />
+    <Property Name="LUONGCOSO" Type="Int32" />
+    <Property Name="PHUCAP" Type="Int32" />
+    <Property Name="THUONG" Type="Int32" />
+    <Property Name="UNGLUONG" Type="Int32" />
+    <NavigationProperty Name="BAOCAOs" Relationship="QLNhanSuModel.BC_L_FK" FromRole="PHIEULUONG" ToRole="BAOCAO" />
+    <NavigationProperty Name="CHUCVU" Relationship="QLNhanSuModel.PL_CV_FK" FromRole="PHIEULUONG" ToRole="CHUCVU" />
+    <NavigationProperty Name="NGHIPHEP" Relationship="QLNhanSuModel.FK_PHIEULUONG_NGHIPHEP" FromRole="PHIEULUONG" ToRole="NGHIPHEP" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLNhanSuModel.PL_NV_FK" FromRole="PHIEULUONG" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="PHONGBAN">
+    <Key>
+      <PropertyRef Name="MAPB" />
+    </Key>
+    <Property Name="MAPB" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TENPHONGBAN" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLNhanSuModel.FK_NHANVIEN_PHONGBAN" FromRole="PHONGBAN" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="QUOCTICH">
+    <Key>
+      <PropertyRef Name="MAQT" />
+    </Key>
+    <Property Name="MAQT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TENQUOCTICH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLNhanSuModel.FK_NHANVIEN_QUOCTICH" FromRole="QUOCTICH" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="TAIKHOANADMIN">
+    <Key>
+      <PropertyRef Name="MATK_AD" />
+    </Key>
+    <Property Name="MATK_AD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TENDANGNHAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MATKHAU" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MAVT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="VAITRO" Relationship="QLNhanSuModel.FK_TAIKHOANADMIN_VAITRO" FromRole="TAIKHOANADMIN" ToRole="VAITRO" />
+  </EntityType>
+  <EntityType Name="TAIKHOANNGUOIDUNG">
+    <Key>
+      <PropertyRef Name="MATK_ND" />
+    </Key>
+    <Property Name="MATK_ND" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TENDANGNHAP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MATKHAU" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="MAVT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CTTKNGUOIDUNGs" Relationship="QLNhanSuModel.CTTK_ND_FK" FromRole="TAIKHOANNGUOIDUNG" ToRole="CTTKNGUOIDUNG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="QLNhanSuModel.ND_NV_FK" FromRole="TAIKHOANNGUOIDUNG" ToRole="NHANVIEN" />
+    <NavigationProperty Name="VAITRO" Relationship="QLNhanSuModel.FK_TAIKHOANNGUOIDUNG_VAITRO" FromRole="TAIKHOANNGUOIDUNG" ToRole="VAITRO" />
+  </EntityType>
+  <EntityType Name="TONGIAO">
+    <Key>
+      <PropertyRef Name="MATG" />
+    </Key>
+    <Property Name="MATG" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TENTONGIAO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLNhanSuModel.FK_NHANVIEN_TONGIAO" FromRole="TONGIAO" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="TRINHDO">
+    <Key>
+      <PropertyRef Name="MATD" />
+    </Key>
+    <Property Name="MATD" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="TENTRINHDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="NHANVIENs" Relationship="QLNhanSuModel.FK_NHANVIEN_TRINHDO" FromRole="TRINHDO" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="VAITRO">
+    <Key>
+      <PropertyRef Name="MAVT" />
+    </Key>
+    <Property Name="MAVT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TENVAITRO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TAIKHOANADMINs" Relationship="QLNhanSuModel.FK_TAIKHOANADMIN_VAITRO" FromRole="VAITRO" ToRole="TAIKHOANADMIN" />
+    <NavigationProperty Name="TAIKHOANNGUOIDUNGs" Relationship="QLNhanSuModel.FK_TAIKHOANNGUOIDUNG_VAITRO" FromRole="VAITRO" ToRole="TAIKHOANNGUOIDUNG" />
+  </EntityType>
+  <Association Name="BC_CV_FK">
+    <End Type="QLNhanSuModel.CHUCVU" Role="CHUCVU" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.BAOCAO" Role="BAOCAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="MACV" />
+      </Principal>
+      <Dependent Role="BAOCAO">
+        <PropertyRef Name="MACV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BC_HD_FK">
+    <End Type="QLNhanSuModel.HOPDONG" Role="HOPDONG" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.BAOCAO" Role="BAOCAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOPDONG">
+        <PropertyRef Name="MAHD" />
+      </Principal>
+      <Dependent Role="BAOCAO">
+        <PropertyRef Name="MAHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BC_L_FK">
+    <End Type="QLNhanSuModel.PHIEULUONG" Role="PHIEULUONG" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.BAOCAO" Role="BAOCAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEULUONG">
+        <PropertyRef Name="MAL" />
+      </Principal>
+      <Dependent Role="BAOCAO">
+        <PropertyRef Name="MAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BC_NV_FK">
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.BAOCAO" Role="BAOCAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="BAOCAO">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BAOCAO_NGHIPHEP">
+    <End Type="QLNhanSuModel.NGHIPHEP" Role="NGHIPHEP" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.BAOCAO" Role="BAOCAO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGHIPHEP">
+        <PropertyRef Name="MANP" />
+      </Principal>
+      <Dependent Role="BAOCAO">
+        <PropertyRef Name="MANP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BAOHIEMXAHOI_LOAIBAOHIEM">
+    <End Type="QLNhanSuModel.LOAIBAOHIEM" Role="LOAIBAOHIEM" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.BAOHIEMXAHOI" Role="BAOHIEMXAHOI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIBAOHIEM">
+        <PropertyRef Name="LBH_ID" />
+      </Principal>
+      <Dependent Role="BAOHIEMXAHOI">
+        <PropertyRef Name="LBH_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BAOHIEMXAHOI_NHANVIEN">
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.BAOHIEMXAHOI" Role="BAOHIEMXAHOI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="BAOHIEMXAHOI">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BAOHIEMYTE_LOAIBAOHIEM">
+    <End Type="QLNhanSuModel.LOAIBAOHIEM" Role="LOAIBAOHIEM" Multiplicity="1" />
+    <End Type="QLNhanSuModel.BAOHIEMYTE" Role="BAOHIEMYTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAIBAOHIEM">
+        <PropertyRef Name="LBH_ID" />
+      </Principal>
+      <Dependent Role="BAOHIEMYTE">
+        <PropertyRef Name="LBH_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BAOHIEMYTE_NHANVIEN">
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.BAOHIEMYTE" Role="BAOHIEMYTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="BAOHIEMYTE">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_CHUCVU">
+    <End Type="QLNhanSuModel.CHUCVU" Role="CHUCVU" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="MACV" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MACV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PL_CV_FK">
+    <End Type="QLNhanSuModel.CHUCVU" Role="CHUCVU" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.PHIEULUONG" Role="PHIEULUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="MACV" />
+      </Principal>
+      <Dependent Role="PHIEULUONG">
+        <PropertyRef Name="MACV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CTTK_ND_FK">
+    <End Type="QLNhanSuModel.TAIKHOANNGUOIDUNG" Role="TAIKHOANNGUOIDUNG" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.CTTKNGUOIDUNG" Role="CTTKNGUOIDUNG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TAIKHOANNGUOIDUNG">
+        <PropertyRef Name="MATK_ND" />
+      </Principal>
+      <Dependent Role="CTTKNGUOIDUNG">
+        <PropertyRef Name="MATK_ND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_DANTOC">
+    <End Type="QLNhanSuModel.DANTOC" Role="DANTOC" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DANTOC">
+        <PropertyRef Name="MADT" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MADT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HOPDONG_NHANVIEN">
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.HOPDONG" Role="HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NGHIPHEP_NHANVIEN">
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="1" />
+    <End Type="QLNhanSuModel.NGHIPHEP" Role="NGHIPHEP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="NGHIPHEP">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHIEULUONG_NGHIPHEP">
+    <End Type="QLNhanSuModel.NGHIPHEP" Role="NGHIPHEP" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.PHIEULUONG" Role="PHIEULUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGHIPHEP">
+        <PropertyRef Name="MANP" />
+      </Principal>
+      <Dependent Role="PHIEULUONG">
+        <PropertyRef Name="MANP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_PHONGBAN">
+    <End Type="QLNhanSuModel.PHONGBAN" Role="PHONGBAN" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGBAN">
+        <PropertyRef Name="MAPB" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MAPB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_QUOCTICH">
+    <End Type="QLNhanSuModel.QUOCTICH" Role="QUOCTICH" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUOCTICH">
+        <PropertyRef Name="MAQT" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MAQT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_TONGIAO">
+    <End Type="QLNhanSuModel.TONGIAO" Role="TONGIAO" Multiplicity="1" />
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TONGIAO">
+        <PropertyRef Name="MATG" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MATG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_TRINHDO">
+    <End Type="QLNhanSuModel.TRINHDO" Role="TRINHDO" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRINHDO">
+        <PropertyRef Name="MATD" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MATD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ND_NV_FK">
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.TAIKHOANNGUOIDUNG" Role="TAIKHOANNGUOIDUNG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="TAIKHOANNGUOIDUNG">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PL_NV_FK">
+    <End Type="QLNhanSuModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.PHIEULUONG" Role="PHIEULUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="PHIEULUONG">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAIKHOANADMIN_VAITRO">
+    <End Type="QLNhanSuModel.VAITRO" Role="VAITRO" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.TAIKHOANADMIN" Role="TAIKHOANADMIN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VAITRO">
+        <PropertyRef Name="MAVT" />
+      </Principal>
+      <Dependent Role="TAIKHOANADMIN">
+        <PropertyRef Name="MAVT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAIKHOANNGUOIDUNG_VAITRO">
+    <End Type="QLNhanSuModel.VAITRO" Role="VAITRO" Multiplicity="0..1" />
+    <End Type="QLNhanSuModel.TAIKHOANNGUOIDUNG" Role="TAIKHOANNGUOIDUNG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VAITRO">
+        <PropertyRef Name="MAVT" />
+      </Principal>
+      <Dependent Role="TAIKHOANNGUOIDUNG">
+        <PropertyRef Name="MAVT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
